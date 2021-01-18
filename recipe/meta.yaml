@@ -1,36 +1,41 @@
+{% set name = "pygeometa" %}
 {% set version = "0.6.0" %}
 
+
 package:
-  name: pygeometa
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/pygeometa/pygeometa-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pygeometa-{{ version }}.tar.gz
   sha256: 85493ba385af9394744f07e5e647c59624d33a76af2aedab1cdff04420ee09db
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - pygeometa=pygeometa:cli
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python
+    - python >=3
     - pip
   run:
-    - python
+    - python >=3
     - click
     - jinja2
-    - six
     - pyyaml
 
 test:
   imports:
     - pygeometa
+    - pygeometa.schemas
   commands:
+    - pip check
     - pygeometa --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/geopython/pygeometa
