@@ -1,42 +1,47 @@
-{% set version = "0.5.0" %}
+{% set name = "pygeometa" %}
+{% set version = "0.6.0" %}
+
 
 package:
-  name: pygeometa
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/pygeometa/pygeometa-{{ version }}.tar.gz
-  sha256: fdcf6770408b39751c268770eb4bfe284d81ffc8d6a84dafbd4c80642d8ac691
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pygeometa-{{ version }}.tar.gz
+  sha256: 85493ba385af9394744f07e5e647c59624d33a76af2aedab1cdff04420ee09db
 
 build:
   number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
   entry_points:
     - pygeometa=pygeometa:cli
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3
     - pip
   run:
-    - python
+    - python >=3
     - click
     - jinja2
-    - six
     - pyyaml
 
 test:
   imports:
     - pygeometa
+    - pygeometa.schemas
   commands:
+    - pip check
     - pygeometa --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/geopython/pygeometa
   license: MIT
   license_file: LICENSE.md
-  summary: 'pygeometa is a Python package to generate metadata for geospatial datasets'
+  summary: pygeometa is a Python package to generate metadata for geospatial datasets
   license_family: MIT
 
 extra:
