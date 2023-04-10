@@ -1,11 +1,11 @@
-About pygeometa
-===============
+About pygeometa-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pygeometa-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/geopython/pygeometa
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pygeometa-feedstock/blob/main/LICENSE.txt)
 
 Summary: pygeometa is a Python package to generate metadata for geospatial datasets
 
