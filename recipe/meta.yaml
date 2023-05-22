@@ -1,6 +1,5 @@
 {% set name = "pygeometa" %}
-{% set version = "0.14.0" %}
-
+{% set version = "0.15.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pygeometa-{{ version }}.tar.gz
-  sha256: d9b5f50edd6db900253af6c60521eca61d8a0e417ef7df30efa41036896774f9
+  sha256: 59253bc87f0f16dd4d48bf6a2ff4387ab52f274cd59f68f7ce3b0b3ade8cad82
 
 build:
   number: 0
