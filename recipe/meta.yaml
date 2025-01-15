@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pygeometa-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pygeometa-{{ version }}.tar.gz
   sha256: 07b333705286226922a916be93a14164e832a460f6a87ada0909cf0f560f4152
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - pygeometa=pygeometa:cli
@@ -18,10 +18,10 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - click
     - jinja2
     - jsonschema
@@ -39,6 +39,7 @@ test:
     - pygeometa --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/geopython/pygeometa
